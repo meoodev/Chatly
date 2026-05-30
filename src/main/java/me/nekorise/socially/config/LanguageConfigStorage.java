@@ -1,6 +1,5 @@
 package me.nekorise.socially.config;
 
-import me.nekorise.socially.ConsoleLogs.Log;
 import me.nekorise.socially.Chatly;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -44,7 +43,7 @@ public class LanguageConfigStorage {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Log.error(Chatly.getInstance(), "Failed to load language config");
+            Chatly.getInstance().getLogger().warning("Failed to load language config");
         }
     }
 }
