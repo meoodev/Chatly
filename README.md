@@ -81,7 +81,7 @@ If this project gains popularity, more features and improvements will be added s
 ## Permissions
 
 - `chatly.msg` — Use `/msg`, `/w`, `/m`
-- `chatly.reload` — Use `/socially reload`
+- `chatly.reload` — Use `/chatly reload`
 - `chatly.handshake` — Use handshakes
 - `chatly.color` — Send colored chat messages
 - `chatly.badwordbypass` — Bypass bad word filter
