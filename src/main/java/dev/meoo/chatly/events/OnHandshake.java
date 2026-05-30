@@ -1,8 +1,8 @@
-package me.nekorise.socially.events;
+package dev.meoo.chatly.events;
 
-import me.nekorise.socially.config.LanguageConfigStorage;
-import me.nekorise.socially.config.MainConfigStorage;
-import me.nekorise.socially.utils.ChatStringFormatter;
+import dev.meoo.chatly.config.LanguageConfigStorage;
+import dev.meoo.chatly.config.MainConfigStorage;
+import dev.meoo.chatly.utils.ChatStringFormatter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,13 +14,12 @@ public class OnHandshake implements Listener {
         if (!MainConfigStorage.isHandshakeEnabled) {
             return;
         }
-        if (!(event.getRightClicked() instanceof Player)) {
+        if (!(event.getRightClicked() instanceof Player targetPlayer)) {
             return;
         }
 
         Player player = event.getPlayer();
-        Player targetPlayer = (Player) event.getRightClicked();
-        if (!player.hasPermission("socially.handshake")) {
+        if (!player.hasPermission("chatly.handshake")) {
             return;
         }
         player.sendActionBar(ChatStringFormatter.getHandshakeMessage(LanguageConfigStorage.handshakeMessage, targetPlayer));

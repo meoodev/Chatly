@@ -18,3 +18,11 @@ msg:
   message: "<#71d7c6>[<#3bed85><sender> <#71d7c6>→ <#3bed85><recipient><#71d7c6>]: <gray><message>"
 
 handshake-message: "%luckperms_prefix%<gradient:#3bed85:#548AB6><target_player>"
+
+ignore:
+  usage: "<#47add9>Использование: <#71d7c6>/ignore <Игрок>"
+  self: "<#ff0050>Вы не можете игнорировать самого себя"
+  player-not-found: "<#ff0050>Этот игрок сейчас не в сети"
+  added: "<#3bed85>Socially » <#71d7c6>Игрок добавлен в список игнорирования"
+  removed: "<#3bed85>Socially » <#71d7c6>Игрок удалён из списка игнорирования"
+  blocked: "<#ff0050>Этот игрок игнорирует вас"

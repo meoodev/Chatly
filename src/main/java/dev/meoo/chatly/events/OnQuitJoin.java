@@ -1,8 +1,8 @@
-package me.nekorise.socially.events;
+package dev.meoo.chatly.events;
 
-import me.nekorise.socially.config.LanguageConfigStorage;
-import me.nekorise.socially.config.MainConfigStorage;
-import me.nekorise.socially.utils.ChatStringFormatter;
+import dev.meoo.chatly.config.LanguageConfigStorage;
+import dev.meoo.chatly.config.MainConfigStorage;
+import dev.meoo.chatly.utils.ChatStringFormatter;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

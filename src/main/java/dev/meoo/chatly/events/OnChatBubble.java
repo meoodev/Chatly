@@ -1,8 +1,8 @@
-package me.nekorise.socially.events;
+package dev.meoo.chatly.events;
 
-import me.nekorise.socially.Chatly;
-import me.nekorise.socially.config.MainConfigStorage;
-import me.nekorise.socially.utils.ChatBubbleManager;
+import dev.meoo.chatly.Chatly;
+import dev.meoo.chatly.config.MainConfigStorage;
+import dev.meoo.chatly.utils.ChatBubbleManager;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
@@ -14,7 +14,7 @@ import org.bukkit.util.Transformation;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
-import static me.nekorise.socially.utils.ChatStringFormatter.isContainsBlacklistedWords;
+import static dev.meoo.chatly.utils.ChatStringFormatter.isContainsBlacklistedWords;
 
 public class OnChatBubble implements Listener {
 
@@ -48,7 +48,7 @@ public class OnChatBubble implements Listener {
         player.hideEntity(Chatly.getInstance(), textDisplay);
         textDisplay.setAlignment(TextDisplay.TextAlignment.valueOf(MainConfigStorage.chatBubbleAlignment));
         textDisplay.setBillboard(Display.Billboard.valueOf(MainConfigStorage.chatBubbleBillboard));
-        player.setPassenger(textDisplay);
+        player.addPassenger(textDisplay);
 
         Transformation bubbleVector = new Transformation(
                 new Vector3f(0f, MainConfigStorage.chatBubbleYOffset * playerScale, 0f),

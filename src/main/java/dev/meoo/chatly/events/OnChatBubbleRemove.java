@@ -1,6 +1,6 @@
-package me.nekorise.socially.events;
+package dev.meoo.chatly.events;
 
-import me.nekorise.socially.utils.ChatBubbleManager;
+import dev.meoo.chatly.utils.ChatBubbleManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,6 +1,6 @@
-package me.nekorise.socially.config;
+package dev.meoo.chatly.config;
 
-import me.nekorise.socially.Chatly;
+import dev.meoo.chatly.Chatly;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class LanguageConfigStorage {
@@ -17,6 +17,12 @@ public class LanguageConfigStorage {
     public static String msgMessage = "";
     public static String msgUserOffline = "";
     public static String handshakeMessage = "";
+    public static String ignoreUsage = "";
+    public static String ignoreSelf = "";
+    public static String ignorePlayerNotFound = "";
+    public static String ignoreAdded = "";
+    public static String ignoreRemoved = "";
+    public static String ignoreBlocked = "";
 
     public static void loadData() {
         try {
@@ -40,6 +46,13 @@ public class LanguageConfigStorage {
             msgUserOffline = cfg.getString("msg.user-offline");
 
             handshakeMessage = cfg.getString("handshake-message");
+
+            ignoreUsage = cfg.getString("ignore.usage");
+            ignoreSelf = cfg.getString("ignore.self");
+            ignorePlayerNotFound = cfg.getString("ignore.player-not-found");
+            ignoreAdded = cfg.getString("ignore.added");
+            ignoreRemoved = cfg.getString("ignore.removed");
+            ignoreBlocked = cfg.getString("ignore.blocked");
         }
         catch (Exception e) {
             e.printStackTrace();

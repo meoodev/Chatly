@@ -1,14 +1,6 @@
-Hangar: https://hangar.papermc.io/Nekorise/Socially
-
-[![Socially](https://img.shields.io/hangar/views/Socially?link=https%3A%2F%2Fhangar.papermc.io%2FNekorise%2FSocially&style=flat)](https://hangar.papermc.io/Nekorise/Socially) [![Socially](https://img.shields.io/hangar/dt/Socially?link=https%3A%2F%2Fhangar.papermc.io%2FNekorise%2FSocially&style=flat)](https://hangar.papermc.io/Nekorise/Socially) [![Socially](https://img.shields.io/hangar/stars/Socially?link=https%3A%2F%2Fhangar.papermc.io%2FNekorise%2FSocially&style=flat)](https://hangar.papermc.io/Nekorise/Socially) 
-
-All features can be enabled or disabled individually if they are not needed.
-
-![Socially](https://github.com/Nek0rise/Socially/blob/main/media/Socially_label.png?raw=true)
-
 ## Overview
 
-**Socially** is a modern Minecraft plugin designed to improve player communication and interaction.  
+**Chatly** is a modern Minecraft plugin designed to improve player communication and interaction.  
 It adds global and local chat, player mentions, private messages, chat bubbles above players’ heads, and simple interaction mechanics.
 
 The plugin is modular, highly configurable, and suitable for both small SMP servers and large communities.
@@ -78,8 +70,7 @@ If this project gains popularity, more features and improvements will be added s
 ---
 
 ## TODO
-
-- Add `/ignore`
+- 
 - Add legacy format codes support (`&#RRGGBB`)
 - Improve PlaceholderAPI parsing
 - Add more configuration options for chat bubbles
@@ -89,9 +80,10 @@ If this project gains popularity, more features and improvements will be added s
 
 ## Permissions
 
-- `socially.msg` — Use `/msg`, `/w`, `/m`
-- `socially.reload` — Use `/socially reload`
-- `socially.handshake` — Use handshakes
-- `socially.color` — Send colored chat messages
-- `socially.badwordbypass` — Bypass bad word filter
+- `chatly.msg` — Use `/msg`, `/w`, `/m`
+- `chatly.reload` — Use `/socially reload`
+- `chatly.handshake` — Use handshakes
+- `chatly.color` — Send colored chat messages
+- `chatly.badwordbypass` — Bypass bad word filter
+- `chatly.ignore` - Ignore player messages
 

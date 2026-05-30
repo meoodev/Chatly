@@ -1,6 +1,6 @@
-package me.nekorise.socially.config;
+package dev.meoo.chatly.config;
 
-import me.nekorise.socially.Chatly;
+import dev.meoo.chatly.Chatly;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;

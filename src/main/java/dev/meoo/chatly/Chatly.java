@@ -1,11 +1,13 @@
-package me.nekorise.socially;
+package dev.meoo.chatly;
 
 import co.aikar.commands.PaperCommandManager;
-import me.nekorise.socially.commands.MessageCommand;
-import me.nekorise.socially.commands.SociallyCommand;
-import me.nekorise.socially.config.ConfigManager;
-import me.nekorise.socially.events.*;
-import me.nekorise.socially.utils.ChatBubbleManager;
+import dev.meoo.chatly.commands.IgnoreCommand;
+import dev.meoo.chatly.commands.MessageCommand;
+import dev.meoo.chatly.commands.ChatlyCommand;
+import dev.meoo.chatly.config.ConfigManager;
+import dev.meoo.chatly.events.*;
+import dev.meoo.chatly.utils.ChatBubbleManager;
+import dev.meoo.chatly.utils.IgnoreManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +22,7 @@ public final class Chatly extends JavaPlugin {
 
         ConfigManager.loadConfig();
         ChatBubbleManager.initialize();
+        IgnoreManager.initialize();
 
         registerCommands();
         registerEvents();
@@ -34,8 +37,9 @@ public final class Chatly extends JavaPlugin {
     private void registerCommands() {
         PaperCommandManager manager = new PaperCommandManager(this);
 
-        manager.registerCommand(new SociallyCommand());
+        manager.registerCommand(new ChatlyCommand());
         manager.registerCommand(new MessageCommand());
+        manager.registerCommand(new IgnoreCommand());
     }
 
     private void registerEvents() {
@@ -49,7 +53,7 @@ public final class Chatly extends JavaPlugin {
     }
 
     private void registerBStats() {
-        new Metrics(this, 28849);
+        new Metrics(this, 31673);
     }
 
     public static Chatly getInstance() {

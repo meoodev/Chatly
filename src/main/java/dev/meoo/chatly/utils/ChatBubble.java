@@ -1,4 +1,4 @@
-package me.nekorise.socially.utils;
+package dev.meoo.chatly.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;

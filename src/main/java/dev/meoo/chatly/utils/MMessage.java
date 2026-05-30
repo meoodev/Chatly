@@ -1,4 +1,4 @@
-package me.nekorise.socially.utils;
+package dev.meoo.chatly.utils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;

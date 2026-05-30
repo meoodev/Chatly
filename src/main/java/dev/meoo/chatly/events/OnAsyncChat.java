@@ -1,10 +1,10 @@
-package me.nekorise.socially.events;
+package dev.meoo.chatly.events;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
-import me.nekorise.socially.utils.MMessage;
-import me.nekorise.socially.config.LanguageConfigStorage;
-import me.nekorise.socially.config.MainConfigStorage;
-import me.nekorise.socially.utils.ChatStringFormatter;
+import dev.meoo.chatly.utils.MMessage;
+import dev.meoo.chatly.config.LanguageConfigStorage;
+import dev.meoo.chatly.config.MainConfigStorage;
+import dev.meoo.chatly.utils.ChatStringFormatter;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

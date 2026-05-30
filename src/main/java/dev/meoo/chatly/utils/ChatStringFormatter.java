@@ -1,8 +1,8 @@
-package me.nekorise.socially.utils;
+package dev.meoo.chatly.utils;
 
-import me.nekorise.socially.config.LanguageConfigStorage;
-import me.nekorise.socially.config.MainConfigStorage;
-import me.nekorise.socially.events.OnAsyncChat;
+import dev.meoo.chatly.config.LanguageConfigStorage;
+import dev.meoo.chatly.config.MainConfigStorage;
+import dev.meoo.chatly.events.OnAsyncChat;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -100,7 +100,7 @@ public class ChatStringFormatter {
     public static Component getPrivateMessage(Player sender, Player recipient, String message) {
         String format = LanguageConfigStorage.msgMessage;
 
-        Component messageComponent = sender.hasPermission("socially.color")
+        Component messageComponent = sender.hasPermission("chatly.color")
                 ? MINI_MESSAGE.deserialize(message)
                 : Component.text(message);
 
@@ -126,7 +126,7 @@ public class ChatStringFormatter {
     }
 
     public static boolean isContainsBlacklistedWords(String message, Player sender) {
-        if (sender.hasPermission("socially.badwordbypass")) {
+        if (sender.hasPermission("chatly.badwordbypass")) {
             return false;
         }
         for (String word : MainConfigStorage.badWords) {

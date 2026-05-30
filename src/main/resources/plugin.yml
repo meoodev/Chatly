@@ -1,8 +1,8 @@
-name: Socially
+name: Chatly
 version: '${project.version}'
-main: me.nekorise.socially.Chatly
+main: dev.meoo.chatly.Chatly
 api-version: '1.21'
-prefix: Socially
+prefix: Chatly
 authors: [Nekorise]
 description: Chat system
 depend: [PlaceholderAPI]
