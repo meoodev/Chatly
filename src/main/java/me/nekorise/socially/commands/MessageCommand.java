@@ -1,52 +1,79 @@
 package me.nekorise.socially.commands;
 
-import me.nekorise.socially.utils.MMessage;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Default;
 import me.nekorise.socially.config.LanguageConfigStorage;
 import me.nekorise.socially.config.MainConfigStorage;
 import me.nekorise.socially.utils.ChatStringFormatter;
+import me.nekorise.socially.utils.MMessage;
 import net.kyori.adventure.text.Component;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 import static me.nekorise.socially.utils.ChatStringFormatter.isContainsBlacklistedWords;
 
-public class MessageCommand implements CommandExecutor {
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        if (!sender.hasPermission("socially.msg") || !(sender instanceof Player)) {
-            return false;
+@CommandAlias("msg|message|tell|w")
+@CommandPermission("socially.msg")
+public class MessageCommand extends BaseCommand {
+
+    @Default
+    @CommandCompletion("@players")
+    public void onMessage(
+            Player sender,
+            String targetName,
+            String[] args
+    ) {
+
+        if (args.length == 0) {
+            sender.sendMessage(
+                    MMessage.applyColor(LanguageConfigStorage.msgUsage)
+            );
+            return;
         }
 
-        Player player = (Player) sender;
-        if (args.length < 2 || player.getName().equals(args[0])) {
-            player.sendMessage(args.length < 2 ? MMessage.applyColor(LanguageConfigStorage.msgUsage) : MMessage.applyColor(LanguageConfigStorage.msgSelfSendError));
-            return false;
+        if (sender.getName().equalsIgnoreCase(targetName)) {
+            sender.sendMessage(
+                    MMessage.applyColor(LanguageConfigStorage.msgSelfSendError)
+            );
+            return;
         }
 
-        Player recipient = Bukkit.getServer().getPlayer(args[0]);
+        Player recipient = Bukkit.getPlayerExact(targetName);
+
         if (recipient == null) {
-            player.sendMessage(MMessage.applyColor(LanguageConfigStorage.msgUserOffline));
-            return false;
+            sender.sendMessage(
+                    MMessage.applyColor(LanguageConfigStorage.msgUserOffline)
+            );
+            return;
         }
 
-        String message = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
+        String message = StringUtils.join(args, ' ');
 
-        if (isContainsBlacklistedWords(message, player)) {
-            sender.sendMessage(MMessage.applyColor(LanguageConfigStorage.badWordMessage));
-            return false;
+        if (isContainsBlacklistedWords(message, sender)) {
+            sender.sendMessage(
+                    MMessage.applyColor(LanguageConfigStorage.badWordMessage)
+            );
+            return;
         }
 
-        Component finalMessage = ChatStringFormatter.getPrivateMessage(player, recipient, message);
+        Component finalMessage = ChatStringFormatter.getPrivateMessage(
+                sender,
+                recipient,
+                message
+        );
+
         recipient.sendMessage(finalMessage);
-        recipient.playSound(recipient, MainConfigStorage.messageSound, 1.0f, 1.0f);
-        player.sendMessage(finalMessage);
-        return true;
+        recipient.playSound(
+                recipient,
+                MainConfigStorage.messageSound,
+                1.0f,
+                1.0f
+        );
+
+        sender.sendMessage(finalMessage);
     }
 }
-

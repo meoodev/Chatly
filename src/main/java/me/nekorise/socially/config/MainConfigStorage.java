@@ -1,7 +1,7 @@
 package me.nekorise.socially.config;
 
 import me.nekorise.socially.ConsoleLogs.Log;
-import me.nekorise.socially.Socially;
+import me.nekorise.socially.Chatly;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
@@ -53,7 +53,7 @@ public class MainConfigStorage {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Log.error(Socially.getInstance(), "Failed to load main config");
+            Log.error(Chatly.getInstance(), "Failed to load main config");
         }
     }
 }

@@ -1,6 +1,6 @@
 package me.nekorise.socially.utils;
 
-import me.nekorise.socially.Socially;
+import me.nekorise.socially.Chatly;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TextDisplay;
@@ -20,7 +20,7 @@ public class ChatBubbleManager {
             return;
         }
 
-        taskId = Bukkit.getScheduler().runTaskTimer(Socially.getInstance(), () -> {
+        taskId = Bukkit.getScheduler().runTaskTimer(Chatly.getInstance(), () -> {
             if (bubbles.isEmpty()) {
                 return;
             }

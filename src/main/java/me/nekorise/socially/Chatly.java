@@ -1,18 +1,18 @@
 package me.nekorise.socially;
 
+import co.aikar.commands.PaperCommandManager;
 import me.nekorise.socially.commands.MessageCommand;
 import me.nekorise.socially.commands.SociallyCommand;
-import me.nekorise.socially.commands.SociallyTabCompleter;
 import me.nekorise.socially.config.ConfigManager;
 import me.nekorise.socially.events.*;
 import me.nekorise.socially.utils.ChatBubbleManager;
 import org.bstats.bukkit.Metrics;
-import org.bstats.charts.SimplePie;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Socially extends JavaPlugin {
-    private static Socially instance;
+public final class Chatly extends JavaPlugin {
+
+    private static Chatly instance;
 
     @Override
     public void onEnable() {
@@ -20,43 +20,39 @@ public final class Socially extends JavaPlugin {
 
         ConfigManager.loadConfig();
         ChatBubbleManager.initialize();
+
         registerCommands();
-        registerTabCompleters();
         registerEvents();
         registerBStats();
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
         OnChatBubble.deleteAllBubblesOnStop();
     }
 
     private void registerCommands() {
-        getCommand("socially").setExecutor(new SociallyCommand());
-        getCommand("msg").setExecutor(new MessageCommand());
+        PaperCommandManager manager = new PaperCommandManager(this);
+
+        manager.registerCommand(new SociallyCommand());
+        manager.registerCommand(new MessageCommand());
     }
-    
-    private void registerTabCompleters() {
-        getCommand("socially").setTabCompleter(new SociallyTabCompleter());
-    }
-    
+
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
 
-        pm.registerEvents(new OnAsyncChat(), instance);
-        pm.registerEvents(new OnQuitJoin(), instance);
-        pm.registerEvents(new OnChatBubble(), instance);
-        pm.registerEvents(new OnHandshake(), instance);
-        pm.registerEvents(new OnChatBubbleRemove(), instance);
+        pm.registerEvents(new OnAsyncChat(), this);
+        pm.registerEvents(new OnQuitJoin(), this);
+        pm.registerEvents(new OnChatBubble(), this);
+        pm.registerEvents(new OnHandshake(), this);
+        pm.registerEvents(new OnChatBubbleRemove(), this);
     }
 
     private void registerBStats() {
-        Metrics metrics = new Metrics(instance, 28849);
+        new Metrics(this, 28849);
     }
-    
-    public static Socially getInstance() {
+
+    public static Chatly getInstance() {
         return instance;
     }
 }
-

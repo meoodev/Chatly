@@ -1,6 +1,6 @@
 package me.nekorise.socially.events;
 
-import me.nekorise.socially.Socially;
+import me.nekorise.socially.Chatly;
 import me.nekorise.socially.config.MainConfigStorage;
 import me.nekorise.socially.utils.ChatBubbleManager;
 import org.bukkit.GameMode;
@@ -45,7 +45,7 @@ public class OnChatBubble implements Listener {
         playerLoc.setPitch(0);
 
         TextDisplay textDisplay = player.getWorld().spawn(playerLoc, TextDisplay.class);
-        player.hideEntity(Socially.getInstance(), textDisplay);
+        player.hideEntity(Chatly.getInstance(), textDisplay);
         textDisplay.setAlignment(TextDisplay.TextAlignment.valueOf(MainConfigStorage.chatBubbleAlignment));
         textDisplay.setBillboard(Display.Billboard.valueOf(MainConfigStorage.chatBubbleBillboard));
         player.setPassenger(textDisplay);

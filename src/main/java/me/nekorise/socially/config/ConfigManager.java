@@ -1,6 +1,6 @@
 package me.nekorise.socially.config;
 
-import me.nekorise.socially.Socially;
+import me.nekorise.socially.Chatly;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -27,7 +27,7 @@ public class ConfigManager {
         File defaultConfig = new File(path, "config.yml");
         if (!defaultConfig.exists())
         {
-            Socially.getInstance().saveResource("config.yml", false);
+            Chatly.getInstance().saveResource("config.yml", false);
         }
 
         List<String> langConfigFiles = new ArrayList<>(Arrays.asList(languageFiles));
@@ -36,7 +36,7 @@ public class ConfigManager {
             File langConfig = new File(path, "langs/" + langConfigName);
             if (!langConfig.exists())
             {
-                Socially.getInstance().saveResource("langs/" + langConfigName, false);
+                Chatly.getInstance().saveResource("langs/" + langConfigName, false);
             }
         }
     }

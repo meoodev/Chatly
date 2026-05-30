@@ -1,6 +1,6 @@
 name: Socially
 version: '${project.version}'
-main: me.nekorise.socially.Socially
+main: me.nekorise.socially.Chatly
 api-version: '1.21'
 prefix: Socially
 authors: [Nekorise]

@@ -1,28 +1,34 @@
 package me.nekorise.socially.commands;
 
-import me.nekorise.socially.utils.MMessage;
+import co.aikar.commands.BaseCommand;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.CommandPermission;
+
 import me.nekorise.socially.config.ConfigManager;
 import me.nekorise.socially.config.LanguageConfigStorage;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
+import me.nekorise.socially.utils.MMessage;
 
-public class SociallyCommand implements CommandExecutor {
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        if (!sender.hasPermission("socially.reload")) { 
-            return false; 
-        }
-        
-        if ((args.length < 1) || !args[0].equalsIgnoreCase("reload")) {
-            sender.sendMessage(MMessage.applyColor(LanguageConfigStorage.reloadUsage));
-            return false;
-        }
-        
+import org.bukkit.command.CommandSender;
+
+@CommandAlias("socially")
+public class SociallyCommand extends BaseCommand {
+
+    @Default
+    public void onDefault(CommandSender sender) {
+        sender.sendMessage(
+                MMessage.applyColor(LanguageConfigStorage.reloadUsage)
+        );
+    }
+
+    @Subcommand("reload")
+    @CommandPermission("socially.reload")
+    public void onReload(CommandSender sender) {
         ConfigManager.loadConfig();
-        sender.sendMessage(MMessage.applyColor(LanguageConfigStorage.reloadDone));
-        return false;
+
+        sender.sendMessage(
+                MMessage.applyColor(LanguageConfigStorage.reloadDone)
+        );
     }
 }
-
